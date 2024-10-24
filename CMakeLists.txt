@@ -34,44 +34,7 @@ endif()
 install(FILES ${PROJECT_BINARY_DIR}/${PROJECT_NAME}.pc DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig COMPONENT dev)
 
 include( CMakeLists.common.txt )
-
-# include( CMakeLists.common_internal.txt )
-# 
-# IasCreateComponentDocumentation( audio common ${AUDIO_COMMON_VERSION_MAJOR} ${AUDIO_COMMON_VERSION_MINOR} ${AUDIO_COMMON_VERSION_REVISION}
-#   common
-# )
-# 
-# if( NOT IAS_DISABLE_TESTS )
-#   set( ADDITIONAL_RECIPE_CONTENT
-#   PACKAGE ias-audio-common-test-support
-#     PACKAGE_SUMMARY "Test support packages"
-#     PACKAGE_DESCRIPTION "Test support packages used by SmartXbar"
-#     PACKAGE_ENTITIES smartx_test_support
-#     PACKAGE_ENTITIES ias_shm_client_process
-#     PACKAGE_ENTITIES latency
-#   )
-# endif()
-# 
-# IasCreateBbRecipeFile(audio ias-audio-common ${AUDIO_COMMON_VERSION_MAJOR} ${AUDIO_COMMON_VERSION_MINOR} ${AUDIO_COMMON_VERSION_REVISION}
-#   SUMMARY "Audio - Common"
-#   DESCRIPTION "Common Audio components"
-#   GROUP "Multimedia/Audio"
-#   YOCTO_LAYER meta-ias-audio
-#   YOCTO_RECIPE_FOLDER recipes-multimedia/common
-#   #YOCTO_GEN_EXTRA_FLAGS SOURCE_EXPORT
-#   PACKAGE ias-audio-common
-#     PACKAGE_SUMMARY "Common Audio components"
-#     PACKAGE_DESCRIPTION "Common Audio components used by SmartXbar"
-#     PACKAGE_ENTITIES common
-#     PACKAGE_ENTITIES alsa_smartx_plugin
-#     PACKAGE_ENTITIES libasound_module_rate_smartx
-#     PACKAGE_BUILD_REQUIRES alsa-lib
-#     PACKAGE_BUILD_REQUIRES libsndfile1
-#     PACKAGE_BUILD_REQUIRES tbb
-#     PACKAGE_BUILD_REQUIRES boost
-#     PACKAGE_BUILD_REQUIRES dlt-daemon
-#   ${ADDITIONAL_RECIPE_CONTENT}
-# )
+include( CMakeLists.common_internal.txt )
 
 # Add CI configuration for GitHub Actions
 if (DEFINED ENV{GITHUB_ACTIONS})

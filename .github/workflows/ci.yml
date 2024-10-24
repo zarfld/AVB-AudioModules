@@ -11,6 +11,14 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        build_type: [Debug, Release]
+        include:
+          - build_type: Debug
+            cmake_args: -DCMAKE_BUILD_TYPE=Debug
+          - build_type: Release
+            cmake_args: -DCMAKE_BUILD_TYPE=Release
 
     steps:
     - name: Checkout repository
@@ -28,7 +36,7 @@ jobs:
       run: mkdir build
 
     - name: Configure CMake
-      run: cmake -S . -B build
+      run: cmake -S . -B build ${{ matrix.cmake_args }}
 
     - name: Build project
       run: cmake --build build
