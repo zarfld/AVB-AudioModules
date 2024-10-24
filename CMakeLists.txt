@@ -72,3 +72,9 @@ include( CMakeLists.common.txt )
 #     PACKAGE_BUILD_REQUIRES dlt-daemon
 #   ${ADDITIONAL_RECIPE_CONTENT}
 # )
+
+# Add CI configuration for GitHub Actions
+if (DEFINED ENV{GITHUB_ACTIONS})
+  message(STATUS "Configuring for GitHub Actions CI")
+  include( .github/workflows/ci.yml )
+endif()
